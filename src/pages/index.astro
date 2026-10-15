@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ConnectionPanel from '../components/ConnectionPanel.astro';
+import ComposerPanel from '../components/ComposerPanel.astro';
+import PreviewPanel from '../components/PreviewPanel.astro';
+---
+
+<Layout title="Discord message sender">
+  <h1>Discord message sender</h1>
+  <p class="sub">
+    Write a message with Markdown, emojis and embeds, check the preview, then
+    send it to a channel.
+  </p>
+
+  <div class="grid">
+    <div>
+      <ConnectionPanel />
+      <ComposerPanel />
+    </div>
+    <PreviewPanel />
+  </div>
+</Layout>
+
+<script>
+  import '../scripts/app.ts';
+</script>

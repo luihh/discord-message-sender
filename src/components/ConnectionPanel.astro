@@ -1,0 +1,94 @@
+<section class="panel">
+  <h2>Connection</h2>
+  <div
+    class="seg"
+    role="group"
+    aria-label="Send as"
+  >
+    <button
+      type="button"
+      id="modeBot"
+      aria-pressed="true"
+      >Bot token</button
+    >
+    <button
+      type="button"
+      id="modeHook"
+      aria-pressed="false"
+      >Webhook</button
+    >
+  </div>
+
+  <div id="botFields">
+    <label for="token">Bot token</label>
+    <div class="row">
+      <input
+        type="password"
+        id="token"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Paste your bot token"
+      />
+      <button
+        type="button"
+        id="showTok"
+        class="ghost"
+        >Show</button
+      >
+    </div>
+    <label for="channel">Channel ID</label>
+    <input
+      type="text"
+      id="channel"
+      inputmode="numeric"
+      placeholder="e.g. 123456789012345678"
+    />
+    <p class="hint">
+      Turn on Developer Mode in Discord's advanced settings, then right-click
+      the channel and choose Copy Channel ID. The bot needs View Channel and
+      Send Messages there.
+    </p>
+  </div>
+
+  <div
+    id="hookFields"
+    hidden
+  >
+    <label for="hook">Webhook URL</label>
+    <input
+      type="password"
+      id="hook"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="https://discord.com/api/webhooks/…"
+    />
+    <label for="uname">Display name (optional)</label>
+    <input
+      type="text"
+      id="uname"
+      placeholder="Overrides the webhook's name"
+    />
+    <label for="avatar">Avatar URL (optional)</label>
+    <input
+      type="url"
+      id="avatar"
+      placeholder="https://…/image.png"
+    />
+  </div>
+
+  <label class="check"
+    ><input
+      type="checkbox"
+      id="remember"
+    />
+    <span>Remember these settings in this browser</span></label
+  >
+  <p
+    class="warn"
+    id="rememberWarn"
+    hidden
+  >
+    The token will be saved unencrypted in this browser's local storage. Only
+    use this on a device you trust.
+  </p>
+</section>

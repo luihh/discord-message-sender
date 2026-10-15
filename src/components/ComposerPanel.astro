@@ -1,0 +1,116 @@
+---
+// Each button either wraps the selection (pre/post) or prefixes the current line (prefix).
+const tools = [
+  { html: '<b>B</b>', title: 'Bold', pre: '**', post: '**' },
+  { html: '<i>I</i>', title: 'Italic', pre: '*', post: '*' },
+  { html: '<u>U</u>', title: 'Underline', pre: '__', post: '__' },
+  { html: '<s>S</s>', title: 'Strikethrough', pre: '~~', post: '~~' },
+  { html: 'Spoiler', title: 'Spoiler', pre: '||', post: '||' },
+  { html: '&lt;/&gt;', title: 'Inline code', pre: '`', post: '`' },
+  { html: 'Block', title: 'Code block', pre: '```\n', post: '\n```' },
+  { html: 'Link', title: 'Link', pre: '[', post: '](https://)' },
+  { html: 'H1', title: 'Heading', prefix: '# ' },
+  { html: 'H2', title: 'Subheading', prefix: '## ' },
+  { html: 'Quote', title: 'Quote', prefix: '> ' },
+  { html: 'List', title: 'List', prefix: '- ' },
+  { html: 'Small', title: 'Small text', prefix: '-# ' },
+];
+
+const starter = `# 🚀 Hello from my bot
+**Bold**, *italic*, __underline__ and ~~strikethrough~~
+
+> A quote
+
+- ✅ It works
+- 🎉 Emojis too
+
+[A link](https://discord.com)`;
+---
+
+<section class="panel">
+  <h2>Message</h2>
+
+  <div
+    class="tools"
+    id="tools"
+  >
+    {
+      tools.map((t) => (
+        <button
+          type="button"
+          title={t.title}
+          data-pre={t.pre}
+          data-post={t.post}
+          data-prefix={t.prefix}
+          set:html={t.html}
+        />
+      ))
+    }
+  </div>
+
+  <textarea
+    id="content"
+    placeholder="Write your message here…"
+    set:text={starter}
+  />
+  <div
+    class="count"
+    id="count"
+  >
+    0 / 2000
+  </div>
+  <div
+    class="emojis"
+    id="emojis"
+  >
+  </div>
+  <p class="hint">
+    Custom server emoji: type <code>\:name:</code> in Discord and send it to get
+    <code>&lt;:name:id&gt;</code>, then paste that here.
+  </p>
+
+  <details>
+    <summary>Add an embed</summary>
+    <label for="eTitle">Title</label>
+    <input
+      type="text"
+      id="eTitle"
+      placeholder="📢 Update"
+    />
+    <label for="eDesc">Description (supports Markdown)</label>
+    <textarea
+      id="eDesc"
+      class="short"
+    ></textarea>
+    <div class="row end">
+      <div>
+        <label for="eFooter">Footer</label><input
+          type="text"
+          id="eFooter"
+        />
+      </div>
+      <div class="fixed">
+        <label for="eColor">Color</label><input
+          class="color"
+          type="color"
+          id="eColor"
+          value="#5865f2"
+        />
+      </div>
+    </div>
+    <label for="eImage">Image URL</label>
+    <input
+      type="url"
+      id="eImage"
+      placeholder="https://…"
+    />
+  </details>
+
+  <label class="check"
+    ><input
+      type="checkbox"
+      id="pings"
+    />
+    <span>Allow @mentions to ping people</span></label
+  >
+</section>
